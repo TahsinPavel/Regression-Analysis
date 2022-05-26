@@ -38,7 +38,9 @@ y_pred = regressior.predict(x_test)
 
 # Optical Model using Backward Elemenation
 
-import statsmodels.formula.api as sm
+import statsmodels.api as sm
 x = np.append(arr = np.ones((50,1)).astype(int), values =x, axis =1)
 x_opt = x[:, [0,1,2,3,4,5]]
-regressor_ols  = sm.OLS(endog =y,exog = x_opt).fit()
+x_opt = np.array(x_opt, dtype=float)
+regressor_OLS  = sm.OLS(y, x_opt).fit()
+regressor_OLS.summary()
